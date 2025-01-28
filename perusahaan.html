@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perusahaan Islami</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/islamic-theme.css" rel="stylesheet">
+    <style>
+        .arabesque-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230D4B3E' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="islamic-bg-main min-h-screen">
+    <div class="arabesque-pattern"></div>
+
+    <div class="container mx-auto my-10 px-4 relative z-10">
+        <a href="index.html" class="islamic-button inline-flex items-center mb-8">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Kembali ke Beranda
+        </a>
+        
+        <div class="islamic-header text-center mb-12">
+            <h1 class="text-3xl font-bold text-[var(--primary-color)]">Perusahaan </h1>
+           
+        </div>
+
+        <div id="companyContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Company cards will be inserted here dynamically -->
+        </div>
+    </div>
+
+<script>
+    // Daftar perusahaan
+    const companyList = [
+        {
+            id: 1,
+            name: "Arabic Foundation",
+            location: "Jakarta",
+            description: "Perusahaan ketenagakerjaan guru bahasa Arab",
+            website: "https://www.arabicfoundation.com"
+        },
+        {
+            id: 2,
+            name: "Translateaja!",
+            location: "Bandung",
+            description: "Perusahaan penyedia translator haji dan umroh.",
+            website: "https://www.Translateaja!.com"
+        },
+        {
+            id: 3,
+            name: "Consulting Group",
+            location: "Jakarta",
+            description: "Lembaga Konsultan",
+            website: "https://consultinggroup.com"
+        },
+        {
+            id: 4,
+            name: "Islamy Corp",
+            location: "Surabaya",
+            description: "Perusahaan yang bergerak di bidang dakwah.",
+            website: "https://WWw.islamy.com"
+        },
+        {
+            id: 5,
+            name: "Nahawand Group",
+            location: "Jakarta",
+            description: "Komunitas dan lembaga penyedia pemabaca kalam ilahi.",
+            website: "https://www.nahawandgroup.com"
+        },
+        {
+            id: 6,
+            name: "Innovation Boutique",
+            location: "Bandung",
+            description: "Brand fashion busana muslim.",
+            website: "https://www.Innovation.com"
+        },
+        {
+            id: 7,
+            name: "Guide Solutions",
+            location: "Jakarta",
+            description: "Penyedia ketenagakerjaan guide wisata dan tour.",
+            website: "https://www.Guidesolutions.com"
+        },
+        {
+            id: 8,
+            name: "Abata Foundation",
+            location: "Surabaya",
+            description: "Organisasi baca, tulis al-quran.",
+            website: "https://www.Abata.com"
+        },
+        {
+            id: 9,
+            name: "Nailul Project",
+            location: "Jakarta",
+            description: "Konten kreator edukasi seputar islam.",
+            website: "https://www.Nailul.com"
+        }
+    ];
+
+    const companyContainer = document.getElementById('companyContainer');
+    companyList.forEach(company => {
+        const companyCard = `
+            <div class="islamic-card islamic-frame hover:-translate-y-1 transition-transform duration-300">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-[var(--accent-color)] bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-building text-[var(--accent-color)] text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-[var(--primary-color)]">${company.name}</h2>
+                            <div class="flex items-center text-[var(--secondary-color)]">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                ${company.location}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="islamic-divider"></div>
+
+                    <p class="text-gray-600 mb-6">${company.description}</p>
+
+                    <a href="${company.website}" class="islamic-button inline-flex items-center w-full justify-center">
+                        <i class="fas fa-globe mr-2"></i>
+                        Kunjungi Website
+                    </a>
+                </div>
+            </div>
+        `;
+        companyContainer.insertAdjacentHTML('beforeend', companyCard);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Lowongan Pekerjaan Islami</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/islamic-theme.css" rel="stylesheet">
+    <style>
+        .geometric-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230D4B3E' fill-opacity='0.03'%3E%3Cpath d='M50 0l25 25-25 25-25-25zm0 50l25 25-25 25-25-25zm25-25l25 25-25 25-25-25zm-50 0l25 25-25 25-25-25z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="islamic-bg-main min-h-screen">
+    <div class="geometric-pattern"></div>
+
+    <div class="container mx-auto my-10 px-4 relative z-10">
+        <a href="index.html" class="islamic-button inline-flex items-center mb-8">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Kembali ke Daftar Lowongan
+        </a>
+        <div id="jobContainer" class="space-y-8">
+            <!-- Job cards will be inserted here dynamically -->
+        </div>
+    </div>
+
+<script>
+    // Daftar pekerjaan
+    const jobList = [
+        {
+            id: 1,
+            title: "Guru Bahasa Arab",
+            company: "Arabic Foundation",
+            location: "Jakarta",
+            salary: "Rp 3-5 juta",
+            type: "Full-time",
+            description: "Kami mencari seorang Guru Bahasa Arab yang berpengalaman dalam percakapan dan interaksi sehari-hari.",
+            qualifications: [
+                "Minimal lulusan SMA atau sederajatnya.",
+                "Pengalaman minimal 1 tahun mengajar Bahasa Arab.",
+                "Familiar dengan istilah dalam ilmu Nahwu dan Shorof.",
+                "Mampu berinteraksi dan memiliki komunikasi yang baik.",
+                "Sopan dan memiliki Adab yang baik."
+            ]
+        },
+        {
+            id: 2,
+            title: "Translator",
+            company: "Translateaja!",
+            location: "Bandung",
+            salary: "Rp 8-10 juta",
+            type: "Full-time",
+            description: "Mencari translator handal untuk menerjemahkan pemateri/syaikh yang berbahasa asing.",
+            qualifications: [
+                "Lulusan SMA sederajat.",
+                "Dapat menerjemahkan dengan diksi bahasa yang tepat.",
+                "Dapat mengingat dan menyusun kalimat dari pemateri.",
+                "Dapat bekerja dalam tekanan."
+            ]
+        },
+        {
+            id: 3,
+            title: "Konsultan Syariah",
+            company: "Consulting Group",
+            location: "jakarta",
+            salary: "Rp 12-18 juta",
+            type: "Full-time",
+            description: "Konsultasi Keungan Syariah, Audit produk Syariah, konsultasi Bisnis",
+            qualifications: [
+                "Pengalaman minimal S1 Ekonomi Syariah,Perbankan Syariah, atau Akuntansi.",
+                "Sertifikasi Syariah.",
+                "Pengetahuan mendalam tentang fiqih muamalah.",
+                "Mengetahui aturan syariah dalam bisnis. Seperti larangan riba, gharar, dan maysir.",
+            ]
+        },
+        {
+            id: 4,
+            title: "Motivator Islami",
+            company: "Islamy corp",
+            location: "surabaya",
+            salary: "Rp 8-12 juta",
+            type: "Part-time",
+            description: "Menyampaikan ceramah, seminar, atau pelatihan dengan menyisipkan nilai-nilai Islam yang relevan.",
+            qualifications: [
+                "Minimal lulusan S1 di bidang Ilmu Agama Islam (Syariah, Dakwah, Pendidikan Islam, atau Studi Islam).",
+                "Mampu menjelaskan dan mengaitkan ayat-ayat Al-Qur'an serta hadits dengan kehidupan sehari-hari.",
+                "Menggunakan gaya bicara yang menarik dan sesuai dengan audiens, baik muda maupun tua",
+                "Mampu berbicara dengan bahasa yang jelas, terstruktur, dan mudah dipahami."
+                
+            ]
+        },
+        {
+            id: 5,
+            title: "Qari",
+            company: "Nahawand Group",
+            location: "Jakarta",
+            salary: "Rp 6-9 juta",
+            type: "Part-time",
+            description: "Mengajarkan cara membaca Al-Qur'an kepada masyarakat, terutama dalam hal tajwid dan tartil. Serta dapat menjadi muadzin dan imam di masjid",
+            qualifications: [
+                "Mampu membaca Al-Qur'an dengan tartil (lancar, jelas, dan perlahan) sesuai kaidah ilmu tajwid.",
+                "Memiliki pemahaman dan kemampuan melantunkan Al-Qur'an dengan berbagai maqam, seperti Bayati, Saba, Hijaz, Nahawand, dan Rast.",
+                "Mampu mengatur nada dan pernapasan dengan baik selama membaca.",
+                "Menjaga niat ikhlas karena Allah SWT dalam setiap pembacaan."
+            ]
+        },
+        {
+            id: 6,
+            title: "Designer Busana Muslim",
+            company: "Innovation Boutique",
+            location: "Bandung",
+            salary: "Rp 4-6 juta",
+            type: "Online",
+            description: "Membuat konsep desain busana muslim yang inovatif dan sesuai dengan nilai-nilai syariat Islam, Dan memastikan desain tetap modis namun tetap memenuhi standar kesopanan, seperti menutupi aurat dengan baik.",
+            qualifications: [
+                "Lulusan dari jurusan Desain Fashion, Tekstil, atau jurusan terkait.",
+                "Menguasai teknik menggambar sketsa secara manual maupun digital.",
+                "Memiliki pengetahuan tentang jenis kain, tekstur, dan material yang cocok untuk busana muslim.",
+                "Mengetahui syariat Islam terkait busana muslim, seperti aturan menutup aurat, pemilihan bahan yang tidak transparan, dan desain yang tidak ketat."
+            ]
+        },
+        {
+            id: 7,
+            title: "Pemandu Wisata Religi",
+            company: "Guide Solutions",
+            location: "Jakarta",
+            salary: "Rp 4-7 juta",
+            type: "Full-time",
+            description: "Menyusun jadwal dan rencana perjalanan wisata religi yang mencakup tempat-tempat bersejarah atau tempat ibadah dan menyampaikan sejarah, makna, dan nilai-nilai religi dari tempat yang dikunjungi, seperti masjid, makam ulama, pesantren, atau tempat ziarah lainnya.",
+            qualifications: [
+                "Minimal lulusan SMA/sederajat (lebih baik jika memiliki pendidikan di bidang pariwisata, sejarah, atau studi agama).",
+                "Memiliki pengetahuan mendalam tentang agama yang relevan dengan wisata religi, termasuk sejarah, nilai-nilai, dan ritual ibadah.",
+                "Ramah, sabar, dan mampu membangun hubungan baik dengan peserta wisata.",
+                "Tegas namun fleksibel dalam menghadapi perubahan jadwal atau situasi darurat."
+            ]
+        },
+        {
+            id: 8,
+            title: "Guru Tahsin dan Tahfidz",
+            company: "Abata foundation",
+            location: "Surabaya",
+            salary: "Rp 3-4 juta",
+            type: "Part-time",
+            description: "Mengajar dan membimbing siswa dalam memahami dan menghafal Al-Qur'an. dan membantu siswa memperbaiki bacaan dan hafalan Al-Qur'an.",
+            qualifications: [
+                "Pendidikan formal dalam bidang Agama (minimal D3 atau S1).",
+                "Kemampuan membaca dan menghafal Al-Qur'an dengan baik.",
+                "Pengalaman mengajar tahsin dan tahfidz",
+                "Komunikasi yang baik dan kemampuan mengajar."
+            ]
+        },
+        {
+            id: 9,
+            title: "Penulis dan Editor Konten Islami",
+            company: "Nailul Project",
+            location: "Jakarta",
+            salary: "Rp 4-6 juta",
+            type: "Online",
+            description: "Menulis artikel, esai, atau opini tentang topik Islami dan mengedit dan merevisi konten untuk memastikan akurasi dan kesesuaian.",
+            qualifications: [
+                "Pendidikan formal dalam bidang Agama, Sastra, atau Komunikasi.",
+                "Pengalaman menulis dan mengedit konten Islami.",
+                "Kemampuan penulisan dan editing yang baik.",
+                "Pengetahuan tentang Islam dan nilai-nilainya."
+            ]
+        }
+    ];
+
+    function createJobCard(job) {
+        return `
+            <div class="islamic-card islamic-frame">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-[var(--primary-color)] mb-2">${job.title}</h2>
+                    <div class="text-[var(--secondary-color)] text-lg mb-4">${job.company}</div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-color)] w-6"></i>
+                            <span>${job.location}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-money-bill text-[var(--accent-color)] w-6"></i>
+                            <span>${job.salary}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-[var(--accent-color)] w-6"></i>
+                            <span>${job.type}</span>
+                        </div>
+                    </div>
+
+                    <div class="islamic-divider"></div>
+
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-[var(--primary-color)] mb-3">Deskripsi Pekerjaan</h3>
+                        <p class="text-gray-600">${job.description}</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-[var(--primary-color)] mb-3">Kualifikasi</h3>
+                        <ul class="list-none space-y-2">
+                            ${job.qualifications.map(qual => `
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[var(--accent-color)] mt-1 mr-2"></i>
+                                    <span class="text-gray-600">${qual}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <button onclick="applyForJob('${job.title}')" class="islamic-button w-full">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Lamar Sekarang
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    function applyForJob(jobTitle) {
+        alert(`Anda akan melamar untuk posisi ${jobTitle}`);
+        // Add your application logic here
+    }
+
+    // Memasukkan semua pekerjaan ke dalam container
+    const jobContainer = document.getElementById('jobContainer');
+    jobList.forEach(job => {
+        const jobCard = createJobCard(job);
+        jobContainer.insertAdjacentHTML('beforeend', jobCard);
+    });
+</script>
+
+</body>
+</html>
